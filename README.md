@@ -46,6 +46,554 @@ Describe the purpose of the project and give clues about what the code does.
 For more information go to the following link [Diary Reference](./development_diary/README.md).
 
 
+## Query Documentation
+
+## animeServers([id])
+
+*To verify the `id` of each episode, look at the `episodes` property:*
+
+```json
+"episodes": [
+  {
+    "nextEpisodeDate": "2019-10-31"
+  },
+  {
+    "episode": 1,
+    "id": "53099/psychopass-3-1",
+    "imagePreview": "https://cdn.animeflv.net/screenshots/3225/1/th_3.jpg"
+  }
+]
+
+```
+
+```graphql
+query{
+  animeServers(id: "53099/psychopass-3-1"){
+    server
+    title
+    allow_mobile
+    code
+  }
+}
+```
+
+## search([query])
+
+```graphql
+query{
+  search(query: "Tokyo Ghoul"){
+    id
+    title
+    poster
+    banner
+    synopsis
+    debut 
+    type
+    rating 
+    genres
+    episodes{
+      nextEpisodeDate
+      episode
+      id
+      imagePreview
+    }
+  }
+}
+```
+
+## latestAnime
+*It will show N data per page , Total page unknown.*
+
+```graphql
+query{
+  latestAnime{
+    id
+    title
+    poster
+    banner
+    synopsis
+    debut
+    type
+    rating
+    genres
+    episodes{
+      nextEpisodeDate
+      episode
+      id
+      imagePreview
+    }
+  }
+}
+```
+
+## latestEpisodes
+*It will show N data per page , Total page unknown.*
+
+```graphql
+query{
+  latestEpisodes{
+    id	
+    title
+    poster
+    episode
+    servers{
+      server
+      title
+      allow_mobile
+      code
+    }
+  }
+}
+```
+
+
+## genres([genre] , [sortBy] , [page])
+
+<table>
+<tr><th>Genres</th><th>SortBy</th><th>Page</th></tr>
+<tr><td>
+
+|   genres            |                        |                 |
+|---------------------|------------------------|-----------------|
+|accion               |  infantil              | sobrenatural    |
+|artes-marciales      |  josei                 | superpoderes    |
+|aventura             |  juegos                | suspenso        |
+|carreras             |  magia                 | terror          |
+|ciencia-ficcion      |  mecha                 | vampiros        |
+|comedia              |  militar               | yaoi            |
+|demencia             |  misterio              | yuri            |
+|demonios             |  musica                |                 |
+|deportes             |  parodia               |                 |
+|drama                |  psicologico           |                 |
+|ecchi                |  recuentos-de-la-vida  |                 |
+|escolares            |  romance               |                 |
+|espacial             |  samurai               |                 |
+|fantasia             |  seinen                |                 |
+|harem                |  shoujo                |                 |
+|historico            |  shounen               |                 |
+
+</td><td>
+
+| sortBy                 |  value   |
+|----------------------- |----------|
+| default anime order    | default  |
+| Recently Updated anime | updated  |
+| Recently Added anime   | added    |
+| anime by Rating        | rating   |
+| anime by Title         | title    |
+
+</td><td>
+
+| pages  |
+|--------|
+| [1 .. total page unknown]|
+</table>
+
+
+```graphql
+query{
+  genres(genre: "accion" , sortBy: "defaut" , page: 1){
+    id
+    title
+    poster
+    banner
+    synopsis
+    debut
+    type
+    rating
+    genres
+    episodes{
+      nextEpisodeDate
+      episode
+      id
+      imagePreview
+    }
+  }
+}
+```
+
+## movies([sortBy] , [page])
+
+<table>
+<tr><th>SortBy</th><th>Page</th></tr>
+<tr><td>
+
+| sortBy                 |  value   |
+|----------------------- |----------|
+| default anime order    | default  |
+| Recently Updated anime | updated  |
+| Recently Added anime   | added    |
+| anime by Rating        | rating   |
+| anime by Title         | title    |
+
+</td><td>
+
+| pages  |
+|--------|
+| [1 .. total page unknown]|
+
+</td></tr> </table>
+
+
+```graphql
+query{
+  movies(sortBy: "added" , page: 1){
+    id
+    title
+    poster
+    banner
+    synopsis
+    debut
+    type
+    rating
+    genres
+    episodes{
+      nextEpisodeDate
+      episode
+      id
+      imagePreview
+    }
+  }
+}
+```
+
+## ova([sortBy] , [page])
+<table>
+<tr><th>SortBy</th><th>Page</th></tr>
+<tr><td>
+
+| sortBy                 |  value   |
+|----------------------- |----------|
+| default anime order    | default  |
+| Recently Updated anime | updated  |
+| Recently Added anime   | added    |
+| anime by Rating        | rating   |
+| anime by Title         | title    |
+
+</td><td>
+
+| pages  |
+|--------|
+| [1 .. total page unknown]|
+
+</td></tr> </table>
+
+```graphql
+query{
+  ova(sortBy: "added" , page: 1){
+    id
+    title
+    poster
+    banner
+    synopsis
+    debut
+    type
+    rating
+    genres
+    episodes{
+      nextEpisodeDate
+      episode
+      id
+      imagePreview
+    }
+  }
+}
+```
+
+## special([sortBy] , [page])
+
+<table>
+<tr><th>SortBy</th><th>Page</th></tr>
+<tr><td>
+
+| sortBy                 |  value   |
+|----------------------- |----------|
+| default anime order    | default  |
+| Recently Updated anime | updated  |
+| Recently Added anime   | added    |
+| anime by Rating        | rating   |
+| anime by Title         | title    |
+
+</td><td>
+
+| pages  |
+|--------|
+| [1 .. total page unknown]|
+
+</td></tr> </table>
+
+```graphql
+query{
+  special(sortBy: "added" , page: 1){
+    id
+    title
+    poster
+    banner
+    synopsis
+    debut
+    type
+    rating
+    genres
+    episodes{
+      nextEpisodeDate
+      episode
+      id
+      imagePreview
+    }
+  }
+}
+```
+
+
+## tv([sortBy] , [page])
+
+<table>
+<tr><th>SortBy</th><th>Page</th></tr>
+<tr><td>
+
+| sortBy                 |  value   |
+|----------------------- |----------|
+| default anime order    | default  |
+| Recently Updated anime | updated  |
+| Recently Added anime   | added    |
+| anime by Rating        | rating   |
+| anime by Title         | title    |
+
+</td><td>
+
+| pages  |
+|--------|
+| [1 .. total page unknown]|
+
+</td></tr> </table>
+
+```graphql
+query{
+  tv(sortBy: "added" , page: 1){
+    id
+    title
+    poster
+    banner
+    synopsis
+    debut
+    type
+    rating
+    genres
+    episodes{
+      nextEpisodeDate
+      episode
+      id
+      imagePreview
+    }
+  }
+}
+```
+
+## byState([state] , [order] , [page])
+<table>
+<tr><th>Status</th><th>SortBy</th><th>Page</th></tr>
+<tr><td>
+
+|  state       |  value  |
+|--------------|---------|
+|  In emission |   1     |
+|  Finalized   |   2     |
+|  coming soon |   3     |
+
+</td><td>
+
+| sortBy                 |  value   |
+|----------------------- |----------|
+| default anime order    | default  |
+| Recently Updated anime | updated  |
+| Recently Added anime   | added    |
+| anime by Rating        | rating   |
+| anime by Title         | title    |
+
+</td><td>
+
+| pages  |
+|--------|
+| [1 .. total page unknown]|
+
+</td></tr> </table>
+
+
+```graphql
+query{
+  byState(state: 1 , order: "default" , page: 1){
+    id
+    title
+    poster
+    banner
+    synopsis
+    debut
+    type
+    rating
+    genres
+    episodes{
+      nextEpisodeDate
+      episode
+      id
+      imagePreview
+    }
+  }
+}
+```
+
+## animeCharacters([title])
+**This function is not yet stable, it may present an error in trying to return some characters. For now it is functional, but not quite stable.❗❗**
+
+*If you use any API entry point you will see that the `title` property*
+
+```javascript
+"title": "Tokyo Ghoul"
+
+```
+
+*for each anime will be available, you should take the value of the `title` and pass it to the query param.*
+
+```graphql
+query{
+  animeCharacters(title: "Tokyo Ghoul"){
+    character{
+      id
+      name
+      image
+      role
+    }
+  }
+}
+```
+
+
+## promo([title])
+**This function is not yet stable, it may present an error in trying to return some trailers. For now it is functional, but not quite stable.❗❗**
+
+*To get the list of promo (trailers) for each anime, you must use the `title` property and pass it to the query as a parameter.*
+
+```graphql
+query{
+  promo(title: "Tokyo Ghoul"){
+    title
+    previewImage
+    videoURL
+  }
+}
+```
+
+## animeInfo([id] , [title])
+**This function is not yet stable, it may present an error in trying to return some trailers. For now it is functional, but not quite stable.❗❗**
+
+*To get the anime info of a particula anime, you must use the `id` and the `title` property and pass it to the query as a parameter.*
+
+*For example:*
+
+```json
+"id": "anime/5226/tokyo-ghoul"
+"title": "Tokyo Ghoul"
+```
+
+```graphql
+query{
+  animeInfo(id: "anime/5226/tokyo-ghoul" , title: "Tokyo Ghoul"){
+    id
+    title
+    poster
+    banner
+    synopsis
+    debut
+    type
+    rating
+    genres
+    charactersList{
+      character{
+        id
+        name
+        image
+        role
+      }
+    }
+    promoList{
+      title
+     	 previewImage
+      videoURL
+    }
+    moreInfo{
+      titleJapanese
+      source
+      totalEpisodes
+      status
+      duration
+      rank
+      popularity
+      members
+      favorites
+      premiered
+      broadcast
+      endingThemes
+      openingThemes
+      studios{
+        names
+      }
+      licensors{
+        names
+      }
+      producers{
+        names
+      }
+      aired{
+        from
+        to
+        string
+      }
+    }
+    episodes{
+      nextEpisodeDate
+      episode
+      id
+      imagePreview
+    }
+  }
+}
+```
+
+## downloadLinksByEpsId([epsId])
+*The parameter you should use is the `episode` property that identifies the anime episode.*
+
+*You will find it if you are looking for the `episodes` property*
+
+*For Example:*
+
+```json
+"episodes": [
+  {
+    "nextEpisodeDate": null
+  },
+  {
+    "episode": 12,
+    "id": "28800/tokyo-ghoul-12",
+    "imagePreview": "https://cdn.animeflv.net/screenshots/1415/12/th_3.jpg"
+  },
+  {
+    "episode": 11,
+    "id": "28459/tokyo-ghoul-11",
+    "imagePreview": "https://cdn.animeflv.net/screenshots/1415/11/th_3.jpg"
+  },
+  // .....
+]
+```
+
+
+```graphql
+query{
+  downloadLinksByEpsId(epsId: "28800/tokyo-ghoul-12"){
+    server
+    url
+  }
+}
+```
+
 ## **:handshake: Contributing**
 
 - Fork it!
