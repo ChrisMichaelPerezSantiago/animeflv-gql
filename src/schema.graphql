@@ -1,0 +1,145 @@
+type Animes{
+  id: String
+  title: String
+  poster: String
+  banner: String
+  synopsis: String
+  debut: String
+  type: String
+  rating: String
+  genres: [String]
+  episodes: [Episodes]
+}
+
+type AnimeEpisodes{
+  id: String
+  title: String
+  poster: String
+  episode: Int
+  servers: [Servers]
+}
+
+type Info{ 
+  id: String
+  title: String
+  poster: String
+  banner: String
+  synopsis: String
+  debut: String
+  type: String
+  rating: String
+  charactersList: [CharactersList]
+  promoList: [PromoList]
+  moreInfo: [MoreInfo]
+  episodes: [Episodes]
+  genres: [String ] 
+}
+
+type Episodes{
+  nextEpisodeDate: String
+  episode: String
+  id: String
+  imagePreview: String
+}
+
+type Servers{ 
+  server: String
+  title: String
+  allow_mobile: Boolean
+  code: String 
+}
+
+type Character{ 
+  id: Int 
+  name: String 
+  image: String 
+  role: String 
+}
+
+type Characters{ 
+  character: Character 
+}
+
+type Character { 
+  id: Int 
+  name: String 
+  image: String 
+  role: String 
+}
+
+type Promo{ 
+  title: String 
+  previewImage: String 
+  videoURL: String 
+}
+
+type Downloads { 
+  server: String
+  url: String 
+}
+
+type MoreInfo{ 
+  titleJapanese: String
+  source: String
+  totalEpisodes: Int
+  status: String
+  duration: String
+  rank: Int
+  popularity: Int
+  members: Int
+  favorites: Int
+  premiered: String
+  broadcast: String
+  endingThemes: [String]
+  openingThemes: [String]
+  studios: Studios
+  licensors: Licensors
+  producers: Producers
+  aired: Aired 
+}
+
+type CharactersList{
+  character: Character 
+}
+
+type PromoList{ 
+  title: String 
+  previewImage: String 
+  videoURL: String 
+}
+
+type Studios{ 
+  names: [String]
+}
+
+type Licensors{ 
+  names: [String] 
+}
+
+type Producers{ 
+  names: [String] 
+}
+
+type Aired{ 
+  from: String 
+  to: String 
+  string: String 
+}
+
+
+type Query{
+  latestAnime: [Animes]
+  search(query: String): [Animes]
+  latestEpisodes: [AnimeEpisodes]
+  animeServers(id: String): [Servers]
+  genres(genre: String , sortBy: String , page: Int): [Animes]
+  movies(sortBy: String , page: Int): [Animes]
+  special(sortBy: String , page: Int): [Animes]
+  ova(sortBy: String , page: Int): [Animes]
+  tv(sortBy: String , page: Int): [Animes]
+  byState(state: Int , order: String , page: Int): [Animes]
+  animeCharacters(title: String): [Characters]
+  promo(title: String): [Promo]
+  downloadLinksByEpsId(epsId: String): [Downloads]
+  animeInfo(id: String , title: String): [Info]
+}

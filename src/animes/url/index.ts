@@ -1,0 +1,1 @@
+export const BASE_URL = 'https://animeflv.chrismichael.now.sh/api/v1'
