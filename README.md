@@ -23,9 +23,6 @@
 - [Animeflv](https://github.com/ChrisMichaelPerezSantiago/animeflv)
 
 
-### 👷🚧In construction 
-*Documentation on how to make queries to the animeflv api in the coming days.*
-
 ### **Set up project**
 
 Before cloning the repo **be sure** you have installed:
