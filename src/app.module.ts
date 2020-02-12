@@ -8,8 +8,9 @@ import { AnimesModule } from './animes/animes.module';
     GraphQLModule.forRoot({
       typePaths: ['./**/*.graphql'],
       resolverValidationOptions:{
-        requireResolversForResolveType: false
+        requireResolversForResolveType: false,
       },
+      installSubscriptionHandlers: true,
       playground: true,
       introspection: true,
     }),
