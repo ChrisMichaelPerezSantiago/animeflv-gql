@@ -1,5 +1,5 @@
 import { Module } from '@nestjs/common';
-import {GraphQLModule} from '@nestjs/graphql'
+import {GraphQLModule} from '@nestjs/graphql';
 import { AnimesModule } from './animes/animes.module';
 
 
@@ -9,7 +9,9 @@ import { AnimesModule } from './animes/animes.module';
       typePaths: ['./**/*.graphql'],
       resolverValidationOptions:{
         requireResolversForResolveType: false
-      }
+      },
+      playground: true,
+      introspection: true,
     }),
     AnimesModule,
   ],
